@@ -6,6 +6,11 @@ const appConfig = require("./config/config");
 const getConnection = require("./config/db");
 const conn = getConnection();
 
+const router = require("./routes/index.route");
+const studentRouter = require("./routes/student.route");
+const courseRouter = require("./routes/course.route");
+const registrationRouter = require("./routes/registration.route");
+
 const app = express();
 morgan.token(
   "custom",
@@ -24,9 +29,13 @@ app.use(express.json());
 app.use(morgan("custom"));
 
 // router
+app.use("/", router);
+app.use("/students", studentRouter);
+app.use("/courses", courseRouter);
+app.use("/registrations", registrationRouter);
 
 // server activation
-app.listen(process.env.REACT_APP_DB_PORT, () => {
-  console.log("Server is running on PORT 8000");
+app.listen(process.env.SERVER_PORT, () => {
+  console.log("Server is running on PORT ", process.env.SERVER_PORT);
   // console.log("");
 });
