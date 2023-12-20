@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../app.css";
 
-const TextBox = ({ type, placeholder, onTextChange }) => {
+const TextBox = ({ type, placeholder, onTextChange, value }) => {
   const [textBoxValue, setTextBoxValue] = useState("");
+
   const handleTextBoxChange = async (e) => {
     setTextBoxValue(e.target.value);
     if (onTextChange) {
       onTextChange(e.target.value);
     }
   };
+
+  useEffect(() => {
+    setTextBoxValue(value);
+  }, [value]);
 
   return (
     <div className="textBox">

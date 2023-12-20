@@ -1,0 +1,21 @@
+.course__with-no__student__container {
+  /* background-color: red; */
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.course__with-no__student__container__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  /* height: 90%; */
+  /* padding: 10px; */
+  /* height: 2rem; */
+  /* background-color: green; */
+}

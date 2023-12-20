@@ -60,10 +60,11 @@ router.get("/registrations/:studentId", async (req, res) => {
       res.json(result.rows);
     } else {
       console.log("No Data found");
+      res.status(500).json({ message: "Record not found!" });
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

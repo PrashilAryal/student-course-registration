@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Button from "./Button";
+import "../../assets/css/common/studentItem.css";
 import axios from "axios";
 const StudentItem = ({ data, getStudents }) => {
   const removeStudent = async () => {
@@ -17,16 +18,23 @@ const StudentItem = ({ data, getStudents }) => {
     getStudents();
   }, []);
   return (
-    <div>
-      <p>ID: {data.id}</p>
-      <p>First Name: {data.first_name}</p>
-      <p>Last Name: {data.last_name}</p>
-      <p>phone Num: {data.phone_number}</p>
-      <Button
-        key={data.id}
-        onClick={removeStudent}
-        children={"Remove"}
-      ></Button>
+    <div className="student__item__container">
+      <p className="student__name">
+        {data.first_name} {data.last_name}
+      </p>
+      <div className="student__item__detail">
+        <div className="student__item__container__item1">
+          <p className="student__id">ID: {data.id}</p>
+          <p className="student__number">Phone No.: {data.phone_number}</p>
+        </div>
+        <div className="student__item__container__item2">
+          <Button
+            key={data.id}
+            onClick={removeStudent}
+            children={"Remove"}
+          ></Button>
+        </div>
+      </div>
     </div>
   );
 };

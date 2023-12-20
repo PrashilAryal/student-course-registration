@@ -1,0 +1,22 @@
+.register__student__container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+.register__student__container__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  padding: 20px;
+  height: 2rem;
+}
+.register__student__container__item label {
+  min-width: 30%;
+  /* color: white; */
+  /* background-color: green; */
+}

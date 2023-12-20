@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CourseItem from "./common/CourseItem";
+import "../assets/css/courseWithNoStudent.css";
 import axios from "axios";
 
 function CourseContainer() {
@@ -20,18 +21,20 @@ function CourseContainer() {
     getCourses();
   }, []);
   return (
-    <div>
-      {courses.length === 0 ? (
-        <p>No Courses Found</p>
-      ) : (
-        courses.map((course) => (
-          <CourseItem
-            key={course.id}
-            data={course}
-            getCourses={getCourses}
-          ></CourseItem>
-        ))
-      )}
+    <div className="course__with-no__student__container">
+      <div className="course__with-no__student__container__item">
+        {courses.length === 0 ? (
+          <p>No Courses Found</p>
+        ) : (
+          courses.map((course) => (
+            <CourseItem
+              key={course.id}
+              data={course}
+              getCourses={getCourses}
+            ></CourseItem>
+          ))
+        )}
+      </div>
     </div>
   );
 }

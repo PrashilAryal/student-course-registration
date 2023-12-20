@@ -1,7 +1,96 @@
+/* App Header */
+.app {
+  height: 100%;
+}
+.app .app__header {
+  background-color: #83a2ff;
+  display: flex;
+  height: 5rem;
+  min-height: 5%;
+  padding-left: 1rem;
+  /* width: 100px; */
+}
+.app .app__header .app__header__company {
+  display: flex;
+  align-items: center;
+  color: #ffd28f;
+  font-size: 2rem;
+  left: 0;
+  font-weight: 800;
+}
+.app .app__header .app__header__system {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+}
+/* .app__body__container {
+  display: flex;
+} */
+
+/* App Body */
+.app .app__body {
+  display: flex;
+  height: 100%;
+  /* min-height: 88%; */
+  background-color: #b4bdff;
+  /* border: 1px solid white; */
+  margin: 0;
+  width: 100%;
+}
+/* .app .app__body .app__body__menu { */
+.app .app__body__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* width: 10rem; */
+  /* min-width: 12rem; */
+  /* min-width: 25%; */
+  height: 60px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  background-color: #83a2ff;
+  /* border: 1px solid white; */
+}
+.app .app__body .app__body__content {
+  background-color: #b4bdff;
+  /* border: 1px solid white; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 10px;
+
+  /* background-color: ; */
+}
+.app .app__body .app__body__content .app__body__content__modal {
+  background-color: #83a2ff;
+  height: 90%;
+  width: 90%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* margin-left: 50px; */
+}
+.modal__header {
+  margin-top: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+}
+
 /* Text Box */
 .textBox {
   height: 100%;
   width: 100%;
+  /* background-color: yellow; */
 }
 .textBox .textBox__input {
   outline: none;
@@ -33,4 +122,66 @@
   cursor: pointer;
   transform: scale(1.1);
   background-color: rgba(255, 77, 1, 0.5);
+}
+
+/* Add Student */
+.modal__add__student {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__add__course {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__register__student {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__course_with-not__student {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__search__course__student {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modal__search__student__course {
+  background-color: #ffe3bb;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
