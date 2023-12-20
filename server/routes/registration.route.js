@@ -14,9 +14,11 @@ router.post("/", async (req, res) => {
   } catch (error) {
     if (error.code === "23505") {
       res.status(400).json({ message: "Already registered" });
+    } else if (error.code === "23503") {
+      res.status(400).json({ message: "Record Not Found" });
     } else {
       console.error(error);
-      res.status(500).send("Internal Server Error");
+      res.status(500).json({ message: "Internal Server Error" });
     }
   }
 });

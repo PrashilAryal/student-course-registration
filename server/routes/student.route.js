@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     res.json(result.rows[0]);
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send("Internal Server Error:");
   }
 });
 
@@ -21,12 +21,21 @@ router.post("/", async (req, res) => {
 router.get("/:courseName", async (req, res) => {
   try {
     const courseName = req.params.courseName;
-
+    console.log(courseName);
     const result = await req.conn.query(
-      "SELECT students.first_name, students.last_name FROM students JOIN registrations ON students.id = registrations.student_id JOIN courses ON registrations.course_id = courses.id WHERE courses.course_name=$1",
+      "SELECT * FROM students JOIN registrations ON students.id = registrations.student_id JOIN courses ON registrations.course_id = courses.id WHERE courses.course_name=$1",
+      // "SELECT students.first_name, students.last_name FROM students JOIN registrations ON students.id = registrations.student_id JOIN courses ON registrations.course_id = courses.id WHERE LOWER(courses.course_name)=LOWER($1)",
       [courseName]
     );
-    res.json(result.rows);
+    if (result.rowCount > 0) {
+      console.log(result.rows);
+      res.json(result.rows);
+      // res.json({ message: "Student Removed from the course" });
+    } else {
+      console.log("No data found");
+      // res.json({ message: "No record found" });
+      res.send("No Record Found");
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal Server Error");
@@ -43,11 +52,15 @@ router.get("/registrations/:studentId", async (req, res) => {
     //   [studentId]
     // );
     const result = await req.conn.query(
-      "SELECT students.*, courses.course_name, courses.instructor FROM students JOIN registrations ON students.id = registrations.student_id JOIN courses ON registrations.course_id = courses.id WHERE students.id = $1",
+      "SELECT students.*, courses.* FROM students JOIN registrations ON students.id = registrations.student_id JOIN courses ON registrations.course_id = courses.id WHERE students.id = $1",
       [studentId]
     );
-
-    res.json(result.rows);
+    if (result.rowCount > 0) {
+      console.log(result.rows);
+      res.json(result.rows);
+    } else {
+      console.log("No Data found");
+    }
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
