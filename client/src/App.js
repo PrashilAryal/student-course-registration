@@ -23,9 +23,9 @@ function App() {
     } else if (menuItem === 4) {
       setHeader("Course With No Enrolled Students");
     } else if (menuItem === 5) {
-      setHeader("Search Course to View Enrolled Students");
+      setHeader("Search Course Name to View its Students");
     } else if (menuItem === 6) {
-      setHeader("Search Student to View Student Enrolled Courses");
+      setHeader("Search Student ID to View Enrolled Courses");
     } else {
       setHeader("Welcome");
     }
