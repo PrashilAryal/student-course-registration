@@ -61,6 +61,7 @@ function AddStudent() {
           placeholder={"First Name"}
           onTextChange={handleTextFirstNameChange}
           value={firstName}
+          setValue={setFirstName}
         ></TextBox>
       </div>
       <div className="add__student__container__item">

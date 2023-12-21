@@ -6,7 +6,7 @@ import "../assets/css/studentWithCourse.css";
 import axios from "axios";
 
 function StudentWithCourse() {
-  const [studentId, setStudentId] = useState();
+  const [studentId, setStudentId] = useState("");
   const [courses, setCourses] = useState([]);
   const [message, setMessage] = useState("");
 

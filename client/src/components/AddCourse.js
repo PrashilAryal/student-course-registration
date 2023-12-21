@@ -5,11 +5,11 @@ import "../assets/css/addCourse.css";
 import axios from "axios";
 function AddCourse() {
   const [courseName, setCourseName] = useState("");
-  const [courseCredit, setCourseCredit] = useState();
+  const [courseCredit, setCourseCredit] = useState("");
   const [instructorName, setInstructorName] = useState("");
   const [writerName, setWriterName] = useState("");
-  const [coursePublication, setCoursePublication] = useState();
-  const [publicationYear, setPublicationYear] = useState();
+  const [coursePublication, setCoursePublication] = useState("");
+  const [publicationYear, setPublicationYear] = useState("");
   const [message, setMessage] = useState("");
 
   const clearFields = () => {

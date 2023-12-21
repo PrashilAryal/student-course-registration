@@ -24,7 +24,7 @@ const StudentItem = ({ data, getStudents }) => {
       </p>
       <div className="student__item__detail">
         <div className="student__item__container__item1">
-          <p className="student__id">ID: {data.id}</p>
+          <p className="student__id">ID: {data.student_id}</p>
           <p className="student__number">Phone No.: {data.phone_number}</p>
         </div>
         <div className="student__item__container__item2">

@@ -4,7 +4,7 @@ import Button from "./common/Button";
 import "../assets/css/registerStudent.css";
 import axios from "axios";
 function RegisterStudent() {
-  const [studentId, setStudentId] = useState();
+  const [studentId, setStudentId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [message, setMessage] = useState("");
 

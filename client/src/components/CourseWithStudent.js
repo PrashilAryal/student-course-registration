@@ -72,9 +72,9 @@ function CourseWithStudent() {
           // <p>No Students Found</p>
           // ) : (
           students?.map((student) => (
-            <div>
+            <div key={student.id}>
               <StudentItem
-                key={student.id}
+                // key={student.id}
                 data={student}
                 getStudents={getStudents}
               ></StudentItem>
