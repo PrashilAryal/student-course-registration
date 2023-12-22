@@ -1,5 +1,4 @@
 .course__with-no__student__container {
-  /* background-color: red; */
   width: 90%;
   height: 90%;
   display: flex;
@@ -14,8 +13,4 @@
   justify-content: center;
   align-items: center;
   width: 90%;
-  /* height: 90%; */
-  /* padding: 10px; */
-  /* height: 2rem; */
-  /* background-color: green; */
 }

@@ -58,4 +58,45 @@ const studentCourseDetail = async (req, res) => {
   }
 };
 
-module.exports = { addStudent, enrolledStudents, studentCourseDetail };
+// Retrieve all the students from database
+const allStudents = async (req, res) => {
+  try {
+    const result = await req.conn.query("SELECT * FROM students");
+    console.log(result);
+    if (result.rowCount > 0) {
+      res.json(result.rows);
+    } else {
+      res.status(500).json({ message: "No Students!" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Search student by their ID
+const searchStudent = async (req, res) => {
+  const studentId = parseInt(req.params.studentId);
+  try {
+    const result = await req.conn.query(
+      "SELECT * FROM students WHERE students.id=$1",
+      [studentId]
+    );
+    console.log(result);
+    if (result.rowCount > 0) {
+      res.json(result.rows);
+    } else {
+      res.status(500).json({ message: "No Courses!" });
+    }
+  } catch (error) {
+    console.log(error);
+    console.log("hi");
+  }
+};
+
+module.exports = {
+  addStudent,
+  enrolledStudents,
+  studentCourseDetail,
+  allStudents,
+  searchStudent,
+};

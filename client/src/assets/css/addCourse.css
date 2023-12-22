@@ -1,11 +1,24 @@
+.modal__add__course {
+  background-color: #483d8b;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid white;
+  margin: 0 auto;
+  padding: 20px;
+  align-self: center;
+  width: 100%;
+  color: white;
+}
 .add__course__container {
-  width: 90%;
+  width: 45%;
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: red; */
+  background-color: #382f6e;
+  border-radius: 10px;
 }
 .add__course__container__item {
   display: flex;
@@ -17,6 +30,29 @@
 }
 .add__course__container__item label {
   min-width: 30%;
-  /* color: white; */
-  /* background-color: green; */
+}
+
+.all__course__container {
+  width: 45%;
+  margin-left: 20px;
+}
+.all__course__container h1 {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+.all__course__container div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  border-bottom: 1px solid white;
+}
+.all__course__container div p {
+  font-size: 18px;
+}
+.all__course__container__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: darkorange;
 }

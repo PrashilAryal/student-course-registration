@@ -9,6 +9,6 @@ const {
 router.post("/", registerStudentToCourse);
 
 // Remove a student from a course
-router.delete("/:studentId/:courseId", registerStudentToCourse);
+router.delete("/:studentId/:courseId", removeStudentFromCourse);
 
 module.exports = router;

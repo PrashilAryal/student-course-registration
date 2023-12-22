@@ -1,43 +1,68 @@
-.search__course__student {
-  width: 90%;
-  height: 90%;
+.modal__course {
+  width: 100%;
+}
+.course__filter__container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.course__filter__options {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  /* background-color: red; */
+}
+.course__filter__container .course__filter__options a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  padding: 0 10px;
+  border-bottom: 2px solid red;
+}
+.course__filter__container .course__filter__options a:hover {
+  border-bottom: 2px solid white;
+}
+.course__search_container {
+  display: flex;
 }
 .course__search__box {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: green; */
-  width: 100%;
-  color: black;
-}
-.course__search__box__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-  height: 30px;
-  font-size: 20px;
-  /* width: 10%; */
+  padding: 0 10px;
 }
 
-.course__search__box .text-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
+.enrolled__student__table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
 }
-.course__search__result {
-  width: 90%;
-  height: 90%;
+.enrolled__student__table thead {
+}
+.enrolled__student__table thead tr {
+}
+.enrolled__student__table thead tr th,
+.enrolled__student__table tbody tr td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.enrolled__student__table tbody {
+}
+.enrolled__student__table tbody tr:hover {
+  background-color: coral;
+}
+.enrolled__student__table thead tr th {
+  background-color: #5b4eb0;
+  color: white;
+}
+.enrolled__student__table thead tr,
+.enrolled__student__table tbody tr {
+  color: #f2f2f2;
+}
+
+.messageCourse {
+  color: white;
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  padding: 10px;
+  font-weight: 600;
 }

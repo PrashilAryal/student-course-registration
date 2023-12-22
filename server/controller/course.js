@@ -20,7 +20,6 @@ const addCourse = async (req, res) => {
         publication_year,
       ]
     );
-
     res.json(result.rows[0]);
   } catch (error) {
     if (error.code === "23505") {
@@ -36,8 +35,7 @@ const addCourse = async (req, res) => {
 const courseWithNoStudent = async (req, res) => {
   try {
     const result = await req.conn.query(
-      "SELECT * FROM courses LEFT JOIN registrations ON courses.id = registrations.course_id WHERE" +
-        " registrations.id IS NULL"
+      "SELECT * FROM courses LEFT JOIN registrations ON courses.id = registrations.course_id WHERE registrations.id IS NULL"
     );
 
     res.json(result.rows);
@@ -46,4 +44,38 @@ const courseWithNoStudent = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
-module.exports = { addCourse, courseWithNoStudent };
+
+// Retrieve all courses from database
+const allCourses = async (req, res) => {
+  try {
+    const result = await req.conn.query("SELECT * FROM courses");
+    console.log(result);
+    if (result.rowCount > 0) {
+      res.json(result.rows);
+    } else {
+      res.status(500).json({ message: "No Courses!" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// Search course by its name
+const searchCourse = async (req, res) => {
+  const courseName = req.params.courseName;
+  try {
+    const result = await req.conn.query(
+      "SELECT * FROM courses WHERE LOWER(courses.course_name)=LOWER($1)",
+      [courseName]
+    );
+    console.log(result);
+    if (result.rowCount > 0) {
+      res.json(result.rows);
+    } else {
+      res.status(500).json({ message: "No Courses!" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports = { addCourse, courseWithNoStudent, allCourses, searchCourse };

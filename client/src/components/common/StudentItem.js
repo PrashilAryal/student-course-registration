@@ -26,6 +26,7 @@ const StudentItem = ({ data, getStudents }) => {
         <div className="student__item__container__item1">
           <p className="student__id">ID: {data.student_id}</p>
           <p className="student__number">Phone No.: {data.phone_number}</p>
+          <p>On: {data.created_date}</p>
         </div>
         <div className="student__item__container__item2">
           <Button

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextBox from "./common/TextBox";
 import Button from "./common/Button";
 import "../assets/css/addCourse.css";
@@ -11,6 +11,7 @@ function AddCourse() {
   const [coursePublication, setCoursePublication] = useState("");
   const [publicationYear, setPublicationYear] = useState("");
   const [message, setMessage] = useState("");
+  const [allCourses, setAllCourses] = useState([]);
 
   const clearFields = () => {
     setCourseName("");
@@ -78,66 +79,101 @@ function AddCourse() {
       }
     }
   };
+  const getCourses = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/courses/all-courses`
+      );
+
+      if (Array.isArray(response.data)) {
+        setAllCourses(response.data);
+        console.log(allCourses);
+      } else {
+        setAllCourses([]);
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getCourses();
+  }, [message]);
   return (
-    <div className="add__course__container">
-      <div className="add__course__container__item">
-        <label>Course Name</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Course Name"}
-          onTextChange={handleTextCourseNameChange}
-          value={courseName}
-        ></TextBox>
+    <div className="modal__add__course">
+      <div className="add__course__container">
+        <div className="add__course__container__item">
+          <label>Course Name</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Course Name"}
+            onTextChange={handleTextCourseNameChange}
+            value={courseName}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <label>Course Credit</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Course Credit"}
+            onTextChange={handleTextCourseCreditChange}
+            value={courseCredit}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <label>Instructor's Name</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Instructor's Name"}
+            onTextChange={handleTextInstructorNameChange}
+            value={instructorName}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <label>Writer(s) Name</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Writer(s) Name"}
+            onTextChange={handleTextWriterNameChange}
+            value={writerName}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <label>Course Publication</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Course Publication"}
+            onTextChange={handleTextCoursePublicationChange}
+            value={coursePublication}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <label>Published year</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Published Year"}
+            onTextChange={handleTextPublishedYearChange}
+            value={publicationYear}
+          ></TextBox>
+        </div>
+        <div className="add__course__container__item">
+          <Button onClick={addCourse} children={"Add"}></Button>
+        </div>
+        <p>{message}</p>
       </div>
-      <div className="add__course__container__item">
-        <label>Course Credit</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Course Credit"}
-          onTextChange={handleTextCourseCreditChange}
-          value={courseCredit}
-        ></TextBox>
+      <div className="all__course__container">
+        <h1>All Courses</h1>
+        <div className="all__course__container__title">
+          <p>Course</p>
+          <p>Instructor</p>
+        </div>
+        {allCourses?.map((course) => (
+          <div key={course.id}>
+            <p>{course.course_name}</p>
+            <p>{course.instructor_name}</p>
+          </div>
+        ))}
       </div>
-      <div className="add__course__container__item">
-        <label>Instructor's Name</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Instructor's Name"}
-          onTextChange={handleTextInstructorNameChange}
-          value={instructorName}
-        ></TextBox>
-      </div>
-      <div className="add__course__container__item">
-        <label>Writer(s) Name</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Writer(s) Name"}
-          onTextChange={handleTextWriterNameChange}
-          value={writerName}
-        ></TextBox>
-      </div>
-      <div className="add__course__container__item">
-        <label>Course Publication</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Course Publication"}
-          onTextChange={handleTextCoursePublicationChange}
-          value={coursePublication}
-        ></TextBox>
-      </div>
-      <div className="add__course__container__item">
-        <label>Published year</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Published Year"}
-          onTextChange={handleTextPublishedYearChange}
-          value={publicationYear}
-        ></TextBox>
-      </div>
-      <div className="add__course__container__item">
-        <Button onClick={addCourse} children={"Add"}></Button>
-      </div>
-      <p>{message}</p>
     </div>
   );
 }

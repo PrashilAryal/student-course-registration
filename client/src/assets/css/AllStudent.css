@@ -1,0 +1,38 @@
+.show__student__container {
+  background-color: #382f6e;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  color: white;
+  margin: 10px 5px;
+  width: 100%;
+}
+.show__student__container table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+.show__student__container table thead {
+}
+.show__student__container table thead tr {
+}
+.show__student__container table thead tr th,
+.show__student__container table tbody tr td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.show__student__container table tbody {
+}
+.show__student__container table tbody tr:hover {
+  background-color: coral;
+}
+.show__student__container table thead tr th {
+  background-color: #5b4eb0;
+  color: white;
+}
+.show__student__container table thead tr,
+.show__student__container table tbody tr {
+  color: #f2f2f2;
+}

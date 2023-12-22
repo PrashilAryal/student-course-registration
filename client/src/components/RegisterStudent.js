@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextBox from "./common/TextBox";
 import Button from "./common/Button";
 import "../assets/css/registerStudent.css";
@@ -7,6 +7,7 @@ function RegisterStudent() {
   const [studentId, setStudentId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [message, setMessage] = useState("");
+  const [allStudents, setAllStudents] = useState([]);
 
   const handleTextStudentIdChange = (text) => {
     setStudentId(text);
@@ -42,34 +43,71 @@ function RegisterStudent() {
       setMessage("Please fill all the fields");
     }
   };
+  const getStudents = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/students/all-students`
+      );
+
+      if (Array.isArray(response.data)) {
+        setAllStudents(response.data);
+        console.log(allStudents);
+      } else {
+        setAllStudents([]);
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const clearFields = () => {
     setStudentId("");
     setCourseId("");
   };
+  useEffect(() => {
+    getStudents();
+  }, [message]);
   return (
-    <div className="register__student__container">
-      <div className="register__student__container__item">
-        <label>Student ID</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Student Id"}
-          onTextChange={handleTextStudentIdChange}
-          value={studentId}
-        ></TextBox>
+    <div className="modal__add__student">
+      <div className="register__student__container">
+        <div className="register__student__container__item">
+          <label>Student ID</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Student Id"}
+            onTextChange={handleTextStudentIdChange}
+            value={studentId}
+          ></TextBox>
+        </div>
+        <div className="register__student__container__item">
+          <label>Course ID</label>
+          <TextBox
+            type={"text"}
+            placeholder={"Course Id"}
+            onTextChange={handleTextCourseIdChange}
+            value={courseId}
+          ></TextBox>
+        </div>
+        <div className="register__student__container__item">
+          <Button onClick={registerStudent} children={"Register"}></Button>
+        </div>
+        <p>{message}</p>
       </div>
-      <div className="register__student__container__item">
-        <label>Course ID</label>
-        <TextBox
-          type={"text"}
-          placeholder={"Course Id"}
-          onTextChange={handleTextCourseIdChange}
-          value={courseId}
-        ></TextBox>
+      <div className="all__student__container">
+        <h1>All Students</h1>
+        <div className="all__student__container__title">
+          <p>Name</p>
+          <p>ID</p>
+        </div>
+        {allStudents?.map((student) => (
+          <div key={student.id}>
+            <p>
+              {student.first_name} {student.last_name}
+            </p>
+            <p>{student.id}</p>
+          </div>
+        ))}
       </div>
-      <div className="register__student__container__item">
-        <Button onClick={registerStudent} children={"Register"}></Button>
-      </div>
-      <p>{message}</p>
     </div>
   );
 }

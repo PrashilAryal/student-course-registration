@@ -1,0 +1,28 @@
+.nav-bar {
+}
+nav {
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+nav ul li {
+  list-style: none;
+  display: flex;
+}
+nav ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  color: white;
+  background-color: #ff8c00;
+  padding: 15px 10px;
+  text-align: center;
+  transition: ease 0.3s;
+}
+nav ul li a:hover {
+  background-color: rgb(183, 91, 91);
+  transform: translate(0.5);
+}

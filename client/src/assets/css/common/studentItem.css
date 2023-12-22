@@ -1,19 +1,17 @@
 .student__item__container {
-  background-color: #83a2ff;
-  /* width: 100%; */
-  min-width: 400px;
-  padding: 5px;
-  margin-bottom: 5px;
+  background-color: #483d8b;
+  width: 40%;
+  min-width: 300px;
+  padding: 1px 15px;
   border-radius: 10px;
-  transition: transform 0.5s ease;
+  margin: 5px auto;
 }
 .student__item__container:hover {
-  transform: scaleX(1.05);
 }
 .student__item__container .student__name {
   font-size: 20px;
   font-weight: 800;
-  color: #ffd28f;
+  color: darkorange;
   margin-bottom: 0;
 }
 
@@ -23,19 +21,9 @@
   align-items: center;
   color: white;
   line-height: 0.5;
-  width: 100%;
-  /* background-color: yellow; */
 }
 .student__item__container__item1 {
-  /* background-color: green; */
-  padding-left: 5px;
   min-width: 70%;
 }
 .student__item__container__item2 {
-  /* background-color: green; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 30%;
 }
